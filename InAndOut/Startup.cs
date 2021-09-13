@@ -1,6 +1,8 @@
+using InAndOut.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,9 +25,14 @@ namespace InAndOut
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // This is the dbConetextconfiguration
+            services.AddDbContext<ApplicationDBContext>(options =>
+            // this is the default server, or connection that is used
+              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+            );
+
             // This is basically the dependency injection container, 
             // where the services that come in. 
-            
             services.AddControllersWithViews();
         }
 
