@@ -1,0 +1,33 @@
+﻿
+@model IEnumerable<InAndOut.Models.Expense>
+<div class="container">
+    <div class="row u-pad-x">
+        <div class="col-6">
+            <h3>Expenses</h3>
+        </div>
+        <div class="col-6">
+
+         <a class="btn btn-primary float-right" asp-controller="Expense" asp-action="Create">Create Expense</a>
+        </div>
+    </div>
+</div>
+<div>
+   <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Expense Name</th>
+      <th scope="col">Expense Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(Expense e in Model)
+            {
+                 <tr>
+                  <th scope="row">@e.Id</th>
+                  <td>@e.ExpenseName</td>
+                  <td>@e.Amount</td>
+
+                </tr>   
+            }
+   </tbody>

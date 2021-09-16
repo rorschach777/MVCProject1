@@ -1,2 +1,2 @@
-/InAndOut/bin 
+/InAndOut/bin
 /InAndOut/bin/*
