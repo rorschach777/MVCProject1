@@ -23,7 +23,6 @@ namespace InAndOut.Controllers
         }
 
         [HttpGet]
-
         public IActionResult Create()
         {
             return View();
