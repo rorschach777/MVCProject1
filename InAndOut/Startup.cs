@@ -59,7 +59,6 @@ namespace InAndOut
             app.UseStaticFiles();
 
             // Routing this is what executes the controller & actions. 
-            // 
             app.UseRouting();
 
             app.UseAuthorization();

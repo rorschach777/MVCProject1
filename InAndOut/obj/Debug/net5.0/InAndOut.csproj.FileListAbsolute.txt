@@ -436,3 +436,7 @@ C:\Users\msweitzer\source\repos\InAndOut\InAndOut\obj\Debug\net5.0\Razor\Views\E
 C:\Users\msweitzer\source\repos\InAndOut\InAndOut\obj\Debug\net5.0\Razor\Views\Expense\Create.cshtml.g.cs
 C:\Users\msweitzer\source\repos\InAndOut\InAndOut\obj\Debug\net5.0\Razor\Views\Expense\Delete.cshtml.g.cs
 C:\Users\msweitzer\source\repos\InAndOut\InAndOut\obj\Debug\net5.0\Razor\Views\Expense\Update.cshtml.g.cs
+C:\Users\msweitzer\source\repos\InAndOut\InAndOut\obj\Debug\net5.0\Razor\Views\ExpenseCategory\Index.cshtml.g.cs
+C:\Users\msweitzer\source\repos\InAndOut\InAndOut\obj\Debug\net5.0\Razor\Views\ExpenseCategory\Create.cshtml.g.cs
+C:\Users\msweitzer\source\repos\InAndOut\InAndOut\obj\Debug\net5.0\Razor\Views\ExpenseCategory\Update.cshtml.g.cs
+C:\Users\msweitzer\source\repos\InAndOut\InAndOut\obj\Debug\net5.0\Razor\Views\ExpenseCategory\Delete.cshtml.g.cs

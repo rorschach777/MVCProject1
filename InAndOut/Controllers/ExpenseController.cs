@@ -49,16 +49,18 @@ namespace InAndOut.Controllers
         public IActionResult Update(int? id)
         {
 
+            var model = _db.Expenses.Find(id);
             if (id == null || id == 0)
             {
                 return NotFound();
             }
-            var obj = _db.Expenses.Find(id);
-            if (obj == null)
+   
+            if (model == null)
             {
                 return NotFound();
             }
-            return View(obj);
+   
+            return View(model);
 
         }
 

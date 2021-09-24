@@ -1,0 +1,19 @@
+﻿@model InAndOut.Models.ExpenseCategory
+<div class="container">
+    <div class="row u-pad-x">
+        <div class="col-6">
+            <h3>Create Expense Category</h3>
+        </div>
+        <div class="col-6">
+             <a class="btn btn-primary float-right" asp-controller="ExpenseCategory" asp-action="Index">Go Back</a>
+        </div>
+        <form method="POST" asp-action="CreateExpenseCategory">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-info w-100">Create</button>
+        </form>
+    </div>
+</div>
