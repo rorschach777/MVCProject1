@@ -18,6 +18,7 @@
       <th scope="col">ID</th>
       <th scope="col">Expense Name</th>
       <th scope="col">Expense Amount</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -26,7 +27,13 @@
                  <tr>
                   <th scope="row">@e.Id</th>
                   <td>@e.ExpenseName</td>
-                  <td>@e.Amount</td>
+                  <td>
+                      @e.Amount
+                  </td>
+                  <td>
+                      <a asp-controller="Expense" asp-action="Update" asp-route-Id="@e.Id" class="btn btn-primary mx-1">Update</a>
+                      <a asp-controller="Expense" asp-action="Delete" asp-route-Id="@e.Id" class="btn btn-danger mx-1">Delete</a>
+                  </td>
 
                 </tr>   
             }
