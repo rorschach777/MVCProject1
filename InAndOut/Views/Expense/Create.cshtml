@@ -1,4 +1,5 @@
 ﻿@model InAndOut.Models.Expense
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <div class="container">
     <div class="row u-pad-x">
         <div class="col-6">
@@ -7,14 +8,16 @@
         <div class="col-6">
              <a class="btn btn-primary float-right" asp-controller="Expense" asp-action="Index">Go Back</a>
         </div>
-        <form method="POST" action="CreateExpense">
+        <form method="POST" action="Create">
             <div class="form-group">
                 <label asp-for="ExpenseName"></label>
                 <input asp-for="ExpenseName" class="form-control"/>
+                <span asp-validation-for="ExpenseName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Amount"></label>
                 <input  asp-for="Amount" class="form-control"/>
+                <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-info w-100">Create</button>
         </form>

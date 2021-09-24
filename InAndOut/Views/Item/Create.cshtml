@@ -1,6 +1,7 @@
 ﻿@model InAndOut.Models.Item
-
+@Html.ValidationSummary()
 <form method="POST" asp-action="Create">
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="container">
         <div>
             <h3>Add An Item</h3>
@@ -19,12 +20,15 @@
         <div class="form-group row">
             <div class="col-4">
                <input asp-for="ItemName" class="form-control"/>
+               <span asp-validation-for="ItemName" class="text-danger"></span>
             </div>
             <div class="col-4">
                   <input asp-for="Borrower" class="form-control"/>
+                  <span asp-validation-for="Borrower" class="text-danger"></span>
             </div>
             <div class="col-4">
                     <input asp-for="Lender" class="form-control"/>
+                    <span asp-validation-for="Lender" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
@@ -39,6 +43,7 @@
        
         </div>
     </div>
-
-
 </form>
+@section Scripts {
+    @{ <partial name="_ValidationScriptsPartial" />}
+}

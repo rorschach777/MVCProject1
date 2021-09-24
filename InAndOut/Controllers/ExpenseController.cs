@@ -22,17 +22,25 @@ namespace InAndOut.Controllers
         }
 
         [HttpGet]
+    
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult CreateExpense(Expense expense)
+        public IActionResult Create(Expense expense)
         {
-            _db.Expenses.Add(expense);
-            _db.SaveChanges();
-            return Redirect("Index");
+            // Server side 
+            if (ModelState.IsValid)
+            {
+                // Checks the data attributes on the model
+                _db.Expenses.Add(expense);
+                _db.SaveChanges();
+                return Redirect("Index");
+            }
+            return View(expense);
+    
         }
     }
 }
