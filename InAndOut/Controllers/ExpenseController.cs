@@ -1,6 +1,8 @@
 ﻿using InAndOut.Data;
 using InAndOut.Models;
+using InAndOut.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,29 +19,49 @@ namespace InAndOut.Controllers
         }
         public IActionResult Index()
         {
-            var model = _db.Expenses;
+             IEnumerable<Expense> model = _db.Expenses;
+            foreach (var expense in model)
+            {
+                expense.ExpenseCategory = _db.ExpenseCategories.FirstOrDefault(u => u.Id == expense.ExpenseCategoryId);
+            }
             return View(model);
         }
 
         [HttpGet]
-
         public IActionResult Create()
         {
-            return View();
+
+            //IEnumerable<SelectListItem> CategoryDropDown = _db.ExpenseCategories.Select(i => new SelectListItem
+            //{
+            //    Text = i.Name,
+            //    Value = i.Id.ToString()
+            //});
+            //ViewBag.CategoryDropDown = CategoryDropDown;
+            ExpenseVM expensViewModel = new ExpenseVM()
+            {
+                Expense = new Expense(),
+                CategoryDropDown = _db.ExpenseCategories.Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                })
+            };
+            return View(expensViewModel);
         }
 
         [HttpPost]
-        public IActionResult Create(Expense expense)
+        public IActionResult Create(ExpenseVM model)
         {
             // Server side 
             if (ModelState.IsValid)
             {
                 // Checks the data attributes on the model
-                _db.Expenses.Add(expense);
+               
+                _db.Expenses.Add(model.Expense);
                 _db.SaveChanges();
                 return Redirect("Index");
             }
-            return View(expense);
+            return View(model);
 
         }
 
@@ -48,35 +70,42 @@ namespace InAndOut.Controllers
         [HttpGet]
         public IActionResult Update(int? id)
         {
+            ExpenseVM viewModel = new ExpenseVM();
 
-            var model = _db.Expenses.Find(id);
+            viewModel.Expense = _db.Expenses.Find(id);
+            viewModel.CategoryDropDown = _db.ExpenseCategories.Select(i => new SelectListItem
+            {
+                Text = i.Name,
+                Value = i.Id.ToString()
+            });
+
             if (id == null || id == 0)
             {
                 return NotFound();
             }
    
-            if (model == null)
+            if (viewModel == null)
             {
                 return NotFound();
             }
    
-            return View(model);
+            return View(viewModel);
 
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(Expense expense)
+        public IActionResult Update(ExpenseVM expenseViewModel)
         {
             // Server side 
             if (ModelState.IsValid)
             {
                 // Checks the data attributes on the model
-                _db.Expenses.Update(expense);
+                _db.Expenses.Update(expenseViewModel.Expense);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(expense);
+            return View(expenseViewModel.Expense);
 
         }
 

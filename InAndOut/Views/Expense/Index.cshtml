@@ -18,6 +18,7 @@
       <th scope="col">ID</th>
       <th scope="col">Expense Name</th>
       <th scope="col">Expense Amount</th>
+      <th scope="col">Expense Category</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -29,6 +30,9 @@
                   <td>@e.ExpenseName</td>
                   <td>
                       @e.Amount
+                  </td>
+                  <td>
+                      @e.ExpenseCategory.Name
                   </td>
                   <td>
                       <a asp-controller="Expense" asp-action="Update" asp-route-Id="@e.Id" class="btn btn-primary mx-1">Update</a>

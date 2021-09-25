@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,9 +15,14 @@ namespace InAndOut.Models
 
         [DisplayName("Expense Name")]
         [Required]
-        public string ExpenseName { get; set;}
+        public string ExpenseName { get; set; }
         [Required]
         [Range(1, int.MaxValue, ErrorMessage = "Amount must be greater than 0.")]
         public double Amount { get; set; }
+        // THis is is how primary foreign key's are mapped
+        [ForeignKey("ExpenseCategoryId")]
+        public int ExpenseCategoryId { get; set; }
+        public virtual ExpenseCategory ExpenseCategory { get; set; }
+
     }
 }

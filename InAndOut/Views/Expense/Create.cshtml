@@ -1,4 +1,4 @@
-﻿@model InAndOut.Models.Expense
+﻿@model InAndOut.Models.ViewModels.ExpenseVM
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <div class="container">
     <div class="row u-pad-x">
@@ -10,14 +10,21 @@
         </div>
         <form method="POST" action="Create">
             <div class="form-group">
-                <label asp-for="ExpenseName"></label>
-                <input asp-for="ExpenseName" class="form-control"/>
-                <span asp-validation-for="ExpenseName" class="text-danger"></span>
+                <label asp-for="Expense.ExpenseName"></label>
+                <input asp-for="Expense.ExpenseName" class="form-control"/>
+                <span asp-validation-for="Expense.ExpenseName" class="text-danger"></span>
             </div>
+         
             <div class="form-group">
-                <label asp-for="Amount"></label>
-                <input  asp-for="Amount" class="form-control"/>
-                <span asp-validation-for="Amount" class="text-danger"></span>
+                <label asp-for="Expense.Amount"></label>
+                <input  asp-for="Expense.Amount" class="form-control"/>
+                <span asp-validation-for="Expense.Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group row"> 
+                <select asp-for="Expense.ExpenseCategoryId" asp-items="@Model.CategoryDropDown">
+                    <option selected>--Select Category--</option>
+                </select>
+               <span asp-validation-for="Expense.ExpenseCategoryId" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-info w-100">Create</button>
         </form>
